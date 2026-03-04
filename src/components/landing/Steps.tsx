@@ -1,4 +1,4 @@
-layout.tsximport Image from "next/image";
+import Image from "next/image";
 
 export default function Steps() {
   return (
