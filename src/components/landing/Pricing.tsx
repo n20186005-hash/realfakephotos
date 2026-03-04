@@ -44,20 +44,20 @@ export default function Pricing() {
           原站引用了“德国职业照平均 €250”作为对比，这里复刻其叙事方式与卡片布局。
         </p>
 
-        <div className="mt-9 grid lg:grid-cols-3 gap-5">
+        <ul className="mt-9 grid lg:grid-cols-3 gap-5">
           {tiers.map((t) => (
-            <div
+            <li
               key={t.name}
-              className="rounded-[26px] border bg-white p-7"
+              className="rounded-[26px] border bg-white p-7 list-none"
               style={{
                 borderColor: t.highlight ? "rgba(126,95,255,.45)" : "var(--border)",
                 boxShadow: t.highlight ? "0 20px 60px rgba(126,95,255,.18)" : "0 12px 40px rgba(0,0,0,.06)",
               }}
             >
               <div className="flex items-baseline justify-between gap-3">
-                <p className="font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+                <h3 className="font-semibold text-lg" style={{ fontFamily: "var(--font-display)" }}>
                   {t.name}
-                </p>
+                </h3>
                 {t.highlight ? (
                   <span className="text-xs px-2 py-1 rounded-full text-white" style={{ background: "var(--brand)" }}>
                     Best value
@@ -82,7 +82,7 @@ export default function Pricing() {
               </ul>
 
               <button
-                className="mt-6 w-full px-4 py-3 rounded-xl font-semibold text-white"
+                className="mt-6 w-full px-4 py-3 rounded-xl font-semibold text-white transition hover:opacity-90"
                 style={{ background: t.highlight ? "var(--brand)" : "#111827" }}
                 onClick={() => alert("演示站：未接入支付与生成流程。")}
               >
@@ -92,9 +92,9 @@ export default function Pricing() {
               {t.highlight ? (
                 <p className="mt-3 text-xs text-zinc-500">* 仅复刻前端展示，按钮为占位。</p>
               ) : null}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

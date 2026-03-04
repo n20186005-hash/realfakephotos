@@ -3,16 +3,16 @@
 import Link from "next/link";
 
 const navItems: Array<{ label: string; href: string }> = [
-  { label: "示例", href: "#examples" },
-  { label: "价格", href: "#pricing" },
-  { label: "常见问题", href: "#faq" },
+  { label: "示例", href: "/#examples" },
+  { label: "价格", href: "/#pricing" },
+  { label: "常见问题", href: "/#faq" },
 ];
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-[var(--border)]">
       <div className="container h-16 flex items-center justify-between">
-        <Link href="#top" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span
             className="grid place-items-center size-8 rounded-xl"
             style={{ background: "var(--brand)" }}
@@ -29,13 +29,13 @@ export default function Navbar() {
 
         <nav className="hidden md:flex items-center gap-7 text-sm">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-zinc-700 hover:text-zinc-950 transition"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <a
             href="https://www.companyheadshots.ai/"
@@ -48,7 +48,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
+          <Link
             href="#"
             className="hidden sm:inline-flex px-3 py-2 rounded-lg text-sm font-medium border border-[var(--border)] hover:bg-zinc-50 transition"
             onClick={(e) => {
@@ -57,14 +57,14 @@ export default function Navbar() {
             }}
           >
             Sign in
-          </a>
-          <a
-            href="#pricing"
+          </Link>
+          <Link
+            href="/#pricing"
             className="inline-flex px-3 py-2 rounded-lg text-sm font-semibold text-white"
             style={{ background: "var(--brand)" }}
           >
             Create headshots
-          </a>
+          </Link>
         </div>
       </div>
     </header>

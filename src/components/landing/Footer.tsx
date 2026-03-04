@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 export default function Footer() {
   const links = [
-    { label: "Company Headshots", href: "https://www.companyheadshots.ai/" },
-    { label: "Affiliate", href: "https://www.realfakephotos.com/affiliate" },
-    { label: "Privacy", href: "https://www.realfakephotos.com/legal/privacy-policy" },
-    { label: "Terms", href: "https://www.realfakephotos.com/legal/terms-of-use" },
+    { label: "Company Headshots", href: "https://www.companyheadshots.ai/", external: true },
+    { label: "Affiliate", href: "/#", external: false }, // 暂时指向首页，或者创建 affiliate 页面
+    { label: "Privacy", href: "/privacy-policy", external: false },
+    { label: "Terms", href: "/terms-of-service", external: false },
   ];
 
   return (
@@ -20,17 +22,27 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 text-sm">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-zinc-600 hover:text-zinc-950 transition"
-              >
-                {l.label}
-              </a>
-            ))}
+            {links.map((l) =>
+              l.external ? (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-zinc-600 hover:text-zinc-950 transition"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="text-zinc-600 hover:text-zinc-950 transition"
+                >
+                  {l.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
 

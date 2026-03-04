@@ -52,23 +52,23 @@ function Card({
   img: string;
 }) {
   return (
-    <div className="rounded-[22px] border border-[var(--border)] bg-white overflow-hidden" style={{ boxShadow: "0 10px 30px rgba(0,0,0,.06)" }}>
+    <figure className="rounded-[22px] border border-[var(--border)] bg-white overflow-hidden m-0" style={{ boxShadow: "0 10px 30px rgba(0,0,0,.06)" }}>
       <div className="aspect-[4/3] relative">
         <Image src={img} alt={`${name} 头像示例`} fill className="object-cover" />
       </div>
       <div className="p-5">
         <div className="flex items-center justify-between gap-3">
-          <div>
+          <figcaption>
             <p className="font-semibold" style={{ fontFamily: "var(--font-display)" }}>
               {name}
             </p>
             <p className="text-sm text-zinc-500">{title}</p>
-          </div>
+          </figcaption>
           <span className="text-xs px-2 py-1 rounded-lg border border-[var(--border)]">AI</span>
         </div>
-        <p className="mt-3 text-sm text-zinc-700 leading-relaxed">“{quote}”</p>
+        <blockquote className="mt-3 text-sm text-zinc-700 leading-relaxed">“{quote}”</blockquote>
       </div>
-    </div>
+    </figure>
   );
 }
 
@@ -86,13 +86,13 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="mt-7 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+        <ul className="mt-7 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
           {items.map((it) => (
-            <div key={it.name} className="break-inside-avoid mb-5">
+            <li key={it.name} className="break-inside-avoid mb-5 list-none">
               <Card {...it} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
