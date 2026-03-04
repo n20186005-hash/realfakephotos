@@ -29,7 +29,7 @@ export async function syncUser() {
     create: {
       clerkId: userId,
       email: email || "",
-      credits: 0, // 新用户赠送 0 积分，或者可以改成 10
+      credits: 5, // 新用户赠送 5 积分，作为新人福利
     },
   });
 
