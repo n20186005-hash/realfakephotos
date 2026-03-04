@@ -1,4 +1,8 @@
-import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import { zhCN } from "@clerk/localizations";
+import Navbar from "@/components/landing/Navbar";
+import Footer from "@/components/landing/Footer";
+import { Metadata } from "next";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -62,9 +66,6 @@ export const metadata: Metadata = {
   },
 };
 
-import Navbar from "@/components/landing/Navbar";
-import Footer from "@/components/landing/Footer";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -90,16 +91,18 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="zh-CN" className={`${display.variable} ${body.variable}`}>
-      <body className="antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider localization={zhCN}>
+      <html lang="zh-CN" className={`${display.variable} ${body.variable}`}>
+        <body className="antialiased">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

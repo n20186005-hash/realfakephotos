@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique // Clerk 的用户 ID
+  email     String   @unique
+  credits   Int      @default(0) // 用户积分，默认 0
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images    Image[]
+  purchases Purchase[]
+}
+
+model Image {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  url       String   // 图片 URL
+  prompt    String?  // 生成图片的提示词
+  status    String   // PENDING, COMPLETED, FAILED
+  createdAt DateTime @default(now())
+}
+
+model Purchase {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  amount    Int      // 购买金额（分）
+  credits   Int      // 获得的积分
+  status    String   // PENDING, COMPLETED, FAILED
+  createdAt DateTime @default(now())
+}
