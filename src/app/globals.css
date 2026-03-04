@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/*
+  RealFakePhotos Clone (Next.js)
+  设计取向：极简白底 + 紫色强调（#7E5FFF），大留白、圆角卡片、轻阴影。
+  字体：Bricolage Grotesque（标题）+ Manrope（正文）。
+*/
+
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --brand: #7e5fff;
+  --brand-2: #5b3dff;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: rgba(126, 95, 255, 0.22);
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hr-soft {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
