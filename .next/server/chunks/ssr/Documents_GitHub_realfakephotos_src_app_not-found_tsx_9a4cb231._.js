@@ -1,3 +1,0 @@
-module.exports=[5730,a=>{"use strict";var b=a.i(69340),c=a.i(43811);function d(){return(0,b.jsxs)("div",{className:"container flex flex-col items-center justify-center min-h-[60vh] text-center",children:[(0,b.jsx)("h2",{className:"text-4xl font-bold mb-4",style:{fontFamily:"var(--font-display)"},children:"404 - 页面未找到"}),(0,b.jsx)("p",{className:"text-zinc-600 mb-8 max-w-md",children:"抱歉，我们无法找到您正在寻找的页面。它可能已被移动或不再存在。"}),(0,b.jsx)(c.default,{href:"/",className:"px-6 py-3 rounded-lg text-white font-semibold transition hover:opacity-90",style:{background:"var(--brand)"},children:"返回首页"})]})}a.s(["default",()=>d])}];
-
-//# sourceMappingURL=Documents_GitHub_realfakephotos_src_app_not-found_tsx_9a4cb231._.js.map
