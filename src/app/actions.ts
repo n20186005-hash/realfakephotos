@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -17,10 +17,9 @@ export async function getUserCredits() {
 
 export async function syncUser() {
   const { userId } = await auth();
-  const user = await currentUser();
-  
-  if (!userId || !user) return null;
+  if (!userId) return null;
 
+  const user = await clerkClient.users.getUser(userId);
   const email = user.emailAddresses[0]?.emailAddress;
 
   const dbUser = await prisma.user.upsert({

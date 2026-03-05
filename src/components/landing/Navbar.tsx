@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 
 const navItems: Array<{ label: string; href: string }> = [
   { label: "示例", href: "/#examples" },
@@ -49,33 +49,25 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <SignedOut>
+          <Show when="signed-out">
             <SignInButton mode="modal">
               <button className="hidden sm:inline-flex px-3 py-2 rounded-lg text-sm font-medium border border-[var(--border)] hover:bg-zinc-50 transition">
                 Sign in
               </button>
             </SignInButton>
-          </SignedOut>
-          
-          <SignedIn>
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium text-zinc-700 hover:text-black mr-2"
-            >
+            <SignUpButton mode="modal">
+              <button className="hidden sm:inline-flex px-3 py-2 rounded-lg text-sm font-semibold text-white" style={{ background: "var(--brand)" }}>
+                Sign up
+              </button>
+            </SignUpButton>
+          </Show>
+
+          <Show when="signed-in">
+            <Link href="/dashboard" className="text-sm font-medium text-zinc-700 hover:text-black mr-2">
               Dashboard
             </Link>
             <UserButton afterSignOutUrl="/" />
-          </SignedIn>
-
-          <SignedOut>
-            <Link
-              href="/#pricing"
-              className="inline-flex px-3 py-2 rounded-lg text-sm font-semibold text-white"
-              style={{ background: "var(--brand)" }}
-            >
-              Create headshots
-            </Link>
-          </SignedOut>
+          </Show>
         </div>
       </div>
     </header>

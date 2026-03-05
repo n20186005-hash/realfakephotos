@@ -91,9 +91,9 @@ export default function RootLayout({
   };
 
   return (
-    <ClerkProvider localization={zhCN}>
-      <html lang="zh-CN" className={`${display.variable} ${body.variable}`}>
-        <body className="antialiased">
+    <html lang="zh-CN" className={`${display.variable} ${body.variable}`}>
+      <body className="antialiased">
+        <ClerkProvider localization={zhCN}>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -101,8 +101,8 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
