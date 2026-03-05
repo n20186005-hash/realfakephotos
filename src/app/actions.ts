@@ -40,6 +40,11 @@ export async function mockUploadAndGenerate(formData: FormData) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
 
+  const file = formData.get("file");
+  if (!file) {
+    return { success: false, error: "未检测到上传文件" };
+  }
+
   // 1. 检查积分
   const user = await prisma.user.findUnique({ where: { clerkId: userId } });
   if (!user || user.credits < 1) {

@@ -1,20 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const KEY = "rfp_cookie_consent_v1";
 
-export default function CookieConsent() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    try {
-      const v = localStorage.getItem(KEY);
-      if (!v) setOpen(true);
-    } catch {
-      setOpen(true);
-    }
-  }, []);
+export default function CookieConsent({ initialOpen }: { initialOpen: boolean }) {
+  const [open, setOpen] = useState(initialOpen);
 
   if (!open) return null;
 
@@ -41,7 +32,7 @@ export default function CookieConsent() {
             style={{ background: "var(--brand)" }}
             onClick={() => {
               try {
-                localStorage.setItem(KEY, "accepted");
+                document.cookie = `${KEY}=accepted; path=/; max-age=31536000`;
               } catch {}
               setOpen(false);
             }}

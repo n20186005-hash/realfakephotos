@@ -7,8 +7,12 @@ import Pricing from "@/components/landing/Pricing";
 import FAQ from "@/components/landing/FAQ";
 import CookieConsent from "@/components/landing/CookieConsent";
 import FloatingChat from "@/components/landing/FloatingChat";
+import { cookies } from "next/headers";
 
 export default function Page() {
+  const cookieStore = cookies();
+  const hasConsent = cookieStore.get("rfp_cookie_consent_v1")?.value === "accepted";
+
   return (
     <div>
       <main>
@@ -21,7 +25,7 @@ export default function Page() {
         <FAQ />
       </main>
 
-      <CookieConsent />
+      <CookieConsent initialOpen={!hasConsent} />
       <FloatingChat />
     </div>
   );

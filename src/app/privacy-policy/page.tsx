@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
         
         <h2 className="text-xl font-semibold mb-4 mt-8">1. 简介</h2>
         <p className="mb-4 text-zinc-700">
-          欢迎使用 RealFakePhotos 复刻版（"我们"）。本隐私政策说明了当您访问我们的网站时，我们如何收集、使用和保护您的信息。
+          欢迎使用 RealFakePhotos 复刻版（&ldquo;我们&rdquo;）。本隐私政策说明了当您访问我们的网站时，我们如何收集、使用和保护您的信息。
           请注意，这是一个演示项目，不涉及真实的个人数据处理或商业交易。
         </p>
 

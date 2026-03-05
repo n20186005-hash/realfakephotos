@@ -5,7 +5,18 @@ import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { mockUploadAndGenerate } from "@/app/actions";
 
-export default function DashboardClient({ credits, userImages }: { credits: number, userImages: any[] }) {
+type GeneratedImage = {
+  id: string;
+  url: string;
+};
+
+export default function DashboardClient({
+  credits,
+  userImages,
+}: {
+  credits: number;
+  userImages: GeneratedImage[];
+}) {
   const [isUploading, setIsUploading] = useState(false);
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
@@ -68,7 +79,7 @@ export default function DashboardClient({ credits, userImages }: { credits: numb
           <p className="text-zinc-500 text-sm">暂无生成记录</p>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {userImages.map((img: any) => (
+            {userImages.map((img) => (
               <div key={img.id} className="relative aspect-square rounded-lg overflow-hidden border border-zinc-200 group">
                 <Image src={img.url} alt="Generated" fill className="object-cover" />
                 <a
